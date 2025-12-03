@@ -1,4 +1,4 @@
-// We need mongoose to connect our Node.js app to MongoDB
+/*// We need mongoose to connect our Node.js app to MongoDB
 const mongoose = require("mongoose");
 // function will connect to the database
 const connectDB = async () => {
@@ -18,4 +18,20 @@ const connectDB = async () => {
   }
 };
 // Make this function available to use in other files
+module.exports = connectDB;
+*/
+// config/db.js
+const mongoose = require("mongoose");
+
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI); // no extra options needed
+    console.log("MongoDB Connected Successfully");
+  } catch (error) {
+    console.error("MongoDB connection error:", error);
+    process.exit(1);
+  }
+};
+
+
 module.exports = connectDB;
