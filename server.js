@@ -33,10 +33,12 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
+const morgan = require("morgan");
 
 dotenv.config();
 
 const app = express();
+
 
 // Connect to MongoDB
 connectDB();
@@ -44,6 +46,7 @@ connectDB();
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
+app.use(morgan("dev"));
 
 // Routes
 app.use("/api/auth", require("./routes/authRoutes"));

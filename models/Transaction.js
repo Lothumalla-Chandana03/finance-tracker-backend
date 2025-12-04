@@ -26,17 +26,17 @@ const transactionSchema = new mongoose.Schema(
     description: { type: String }
   },
 
-  {
-    // automatically adds createdAt and updatedAt fields
-    timestamps: true,
+    {
+      // automatically adds createdAt and updatedAt fields
+      timestamps: true,
 
-    // customizing the JSON output sent to frontend
-    toJSON: {
-      transform(doc, ret) {
-        // removing default fields that we don't want to show in API response
-        delete ret.createdAt;
-        delete ret.updatedAt;
-        delete ret.__v;
+      // customizing the JSON output sent to frontend
+      toJSON: {
+        transform(doc, ret) {
+          // removing default fields that we don't want to show in API response
+          delete ret.createdAt;
+          delete ret.updatedAt;
+          delete ret.__v;
 
         // converting time to Indian Standard Time for easy readability
         ret.createdAtIST = new Date(doc.createdAt).toLocaleString("en-IN", {
