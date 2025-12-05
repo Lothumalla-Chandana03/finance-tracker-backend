@@ -17,7 +17,7 @@ router.post("/add",auth, addTransaction);
 
 
 // Get all
-router.get("/all",auth,getAllTransactions);
+router.get("/all",auth, getAllTransactions);
 
 
 // Delete
